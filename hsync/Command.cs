@@ -544,7 +544,7 @@ namespace hsync
                 try
                 {
                     myCommand.CommandText = "INSERT INTO article_pages (Id, Pages) VALUES " +
-                        string.Join(',', items.Select(x => $"({x.Id}, {x.Files})"));
+                        string.Join(',', items.Select(x => $"({x.Id}, {x.Files})")) + " ON DUPLICATE KEY UPDATE";
                     myCommand.ExecuteNonQuery();
                     transaction.Commit();
                 }
